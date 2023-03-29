@@ -1,0 +1,12 @@
+{
+  "name": "Copy issue name for JIRA",
+  "version": "1.0.0",
+  "description": "Parse and copy issue name from JIRA",
+  "manifest_version": 3,
+  "author": "Ivan K.",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "issue jira cp"
+  },
+  "permissions": ["tabs", "activeTab"]
+}
