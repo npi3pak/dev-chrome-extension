@@ -8,5 +8,6 @@
     "default_popup": "index.html",
     "default_title": "issue jira cp"
   },
-  "permissions": ["tabs", "activeTab"]
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "host_permissions": ["https://gitlab*"]
 }
