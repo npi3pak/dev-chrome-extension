@@ -9,5 +9,9 @@
     "default_title": "issue jira cp"
   },
   "permissions": ["tabs", "activeTab", "scripting"],
-  "host_permissions": ["https://gitlab*"]
+  "host_permissions": ["https://gitlab*"],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }

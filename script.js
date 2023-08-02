@@ -3,9 +3,11 @@ const prepareMRButton = document.getElementById("prepare-mr");
 const inputIssue = document.getElementById("issue-name");
 const inputBranch = document.getElementById("target-branch-name");
 
-const CURRENT_TARGET_BRANCH = "v1.67.0";
+let CURRENT_TARGET_BRANCH;
 
 function main() {
+  CURRENT_TARGET_BRANCH = localStorage.getItem("CURRENT_TARGET_BRANCH");
+
   chrome.windows.getCurrent((w) => {
     chrome.tabs.query({ active: true, windowId: w.id }, (tabs) => {
       var tab = tabs[0];
@@ -98,6 +100,10 @@ copyIssueButton.addEventListener("click", async () => {
 
 prepareMRButton.addEventListener("click", async () => {
   await prepareMR();
+});
+
+inputBranch.addEventListener("change", async () => {
+  localStorage.setItem("CURRENT_TARGET_BRANCH", inputBranch.value);
 });
 
 window.onload = main();
