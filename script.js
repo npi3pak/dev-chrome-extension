@@ -1,6 +1,8 @@
 const copyIssueButton = document.getElementById("copy-issue-id");
 const prepareMRButton = document.getElementById("prepare-mr");
+const copyGitCmd = document.getElementById("copy-git-cmd");
 const inputIssue = document.getElementById("issue-name");
+const inputGitCmd = document.getElementById("git-cmd");
 const inputBranch = document.getElementById("target-branch-name");
 
 let CURRENT_TARGET_BRANCH;
@@ -29,8 +31,17 @@ function main() {
 
 function fillTextInput(text) {
   inputIssue.value = text;
+  inputGitCmd.value = `git checkout -b ${text} ${CURRENT_TARGET_BRANCH}`;
+}
+
+function copyIssueNameClick() {
   inputIssue.select();
   navigator?.clipboard.writeText(inputIssue.value);
+}
+
+function copyGitCmdClick() {
+  inputGitCmd.select();
+  navigator?.clipboard.writeText(inputGitCmd.value);
 }
 
 function parseOpenedTaskId(pathname = "") {
@@ -95,11 +106,15 @@ function prepareMR() {
 }
 
 copyIssueButton.addEventListener("click", async () => {
-  await main();
+  await copyIssueNameClick();
 });
 
 prepareMRButton.addEventListener("click", async () => {
   await prepareMR();
+});
+
+copyGitCmd.addEventListener("click", async () => {
+  await copyGitCmdClick();
 });
 
 inputBranch.addEventListener("change", async () => {
